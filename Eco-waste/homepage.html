@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTrack - Your E-Waste Solution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+           
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        header {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .subheading {
+            font-size: 1.5rem;
+            max-width: 600px;
+        }
+
+        .info-blocks {
+            display: flex;
+            justify-content: space-between;
+            padding: 3rem;
+            background-color: #54733A;
+            justify-self: unset;
+            
+        }
+
+        .info-block {
+            background-color: #E0F2C1;
+            padding: 2rem;
+            border-radius: 20000px  ;
+            width: 100%;
+            text-align: center;
+            text-overflow: unset;
+            text-decoration: solid;
+            box-shadow: 10px 20px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 0%;
+            vertical-align: top; 
+            
+            
+        }
+
+        .info-block img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+            margin-right: 22rem;
+            justify-content: space-around;
+            
+        }
+
+        .impact {
+            background-image: url(Earth.jpg);
+            background-size: cover;
+            background-position: center;
+            color: rgb(0, 0, 0);
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            backface-visibility: hidden;
+        
+        }
+
+        .impact h2 {
+            margin-bottom: 2rem;
+        }
+
+        .impact-stats {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .stat {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .stat::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 7px dotted;
+            border-radius: 50%;
+            animation: rotate 10s linear infinite; 
+             
+        }
+
+        .stat:nth-child(1)::before { border-color: #fffb00; }
+        .stat:nth-child(2)::before { border-color: #ff3300cc; }
+        .stat:nth-child(3)::before { border-color: #06ff66; }
+
+        .stat-icon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background-color: rgb(69, 167, 20);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: none;
+        }
+
+        .stat-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .circular-impact {
+            background-color: #3a5a40;
+            padding: 0rem;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .circular-impact h2 {
+            margin-bottom: 0rem;
+        }
+
+        .circular-impact img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 0rem;
+        }
+
+        .cta-button {
+            background-color: #ff6b6b;
+            color: rgb(255, 255, 255);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: absolute;
+            right: 0px;
+            top: 90%;
+            transform: translateY(-50%);
+        }
+
+        .cta-button:hover {
+            background-color: #ff4757;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        footer a {
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal input[type="text"],
+        .modal input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .modal button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal button:hover {
+            background-color: #45a049;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .popup-header {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .popup-content {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .popup-close {
+            cursor: pointer;
+            color: #00796b;
+            font-size: 18px;
+            border: none;
+            background: none;
+            float: right;
+        }
+
+        .popup-close:hover {
+            color: #004d40;
+        }
+
+        .btn-schedule {
+            background-color: #004d40;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            margin: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-schedule:hover {
+            background-color: #00796b;
+        }
+        
+
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <video id="bg-video" autoplay loop muted>
+            <source src="banner-video.mp4" type="video/mp4">
+        </video>
+        <div class="overlay">
+            <nav>
+                <img src="logo.png" alt="EcoTrack Logo" class="logo">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#impact">Impact</a></li>
+                    <li><a href="#request">Request Pickup</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a id="loginBtn">Login</a></li>
+                    <li><a id="signupBtn">Sign Up</a></li>
+                </ul>
+            </nav>
+            <h1>Dispose Smart, Go Green – Your E-Waste Solution!</h1>
+            <p class="subheading">Your gateway to sustainable recycling. Recycle responsibly with EcoTrack.</p>
+        </div>
+    </header>
+
+    <section class="info-blocks">
+        <div class="info-block">
+            <img src="bin.png" alt="What is Waste icon">
+            <h3 >What is Waste?</h3>
+            <p>E-waste refers to electronic products nearing the end of their useful life. Proper disposal is crucial to minimize environmental impact.</p>
+        </div>
+        <div class="info-block">
+            <img src="green.png" alt="Why Recycle icon">
+            <h3 class="info">Why Recycle?</h3>
+            <p>Recycling e-waste conserves natural resources, reduces pollution, and helps create a more sustainable future for our planet.</p>
+        </div>
+        <div class="info-block">
+            <img src="rec.png" alt="Benefits of Recycling icon">
+            <h3 class="info">Benefits of Recycling</h3>
+            <p>Proper e-waste recycling recovers valuable materials, reduces landfill waste, and protects human health and the environment.</p>
+        </div>
+    </section>
+
+    <section class="impact" id="impact">
+        <h2>OUR IMPACT</h2>
+        <div class="impact-stats">
+            <div class="stat">
+                <div class="stat-icon"><img src="yellow.png" alt="Bio-medical icon"></div>
+                <strong>6,500 kg</strong>
+                <p>Bio-medical waste treated daily</p>
+            </div>
+            <div class="stat">
+                <div class="stat-icon"><img src="red.png" alt="Metal icon"></div>
+                <strong>2,500 kg</strong>
+                <p>Metal recovered from e-waste daily</p>
+            </div>
+            <div class="stat">
+                <div class="stat-icon"><img src="green.png" alt="Plastic icon"></div>
+                <strong>5,000 kg</strong>
+                <p>Plastic waste recycled daily</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="circular-impact">
+        <img src="bg.jpg" alt="Circular Impact Infographic">
+        <button class="cta-button" id="request">REQUEST A WASTE PICK UP</button> 
+    </section>
+
+    <footer>
+        <p>Founded in 2024, the company has championed environmental conservation through innovative recycling practices.</p>
+        <p>
+            <a href="kartikeydheer@gmail.com">greevapatel04@gmail.com</a> | 
+            <a href="greevapatel04@gmail.com">kartikeydheer@gmail.com</a> 
+            
+        </p>
+    </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button>Login</button>
+        </div>
+    </div>
+
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Sign Up</h2>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <input type="password" placeholder="Confirm Password" required>
+            <button>Sign Up</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctaButton = document.querySelector('.cta-button');
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            const closeBtns = document.getElementsByClassName('close');
+
+            ctaButton.addEventListener('click', function() {
+                alert('Thank you for your interest! Our team will contact you shortly to arrange a waste pickup.');
+            });
+
+            loginBtn.onclick = function() {
+                loginModal.style.display = "block";
+            }
+
+            signupBtn.onclick = function() {
+                signupModal.style.display = "block";
+            }
+
+            Array.from(closeBtns).forEach(function(btn) {
+                btn.onclick = function() {
+                    loginModal.style.display = "none";
+                    signupModal.style.display = "none";
+                }
+            });
+
+            window.onclick = function(event) {
+                if (event.target == loginModal || event.target == signupModal) {
+                    loginModal.style.display = "none";
+                    signupModal.style.display = "none";
+                }
+            }
+
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('href')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+        });
+        document.querySelector('.btn-schedule').addEventListener('click', function() {
+            document.getElementById('popup').classList.add('active');
+        });
+    
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('popup').classList.remove('active');
+        }
+    </script>
+</body>
+</html>

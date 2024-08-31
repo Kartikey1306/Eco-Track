@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #597445 ; 
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+}
+
+.header {
+    text-align: center;
+    padding: 20px 0;
+    width: 1200px;
+    max-width: 1700px;
+}
+
+.logo h1 {
+    font-size: 110px;
+    margin: 0;
+    color: #E7F0DC;
+    margin-left: 300px;
+}
+
+.highlight {
+    color: #9DC88D; 
+    font-size: large;
+}
+
+.header p {
+    margin-top: 6px;
+    color: #000000; 
+    font-size: 20px;
+    font-style: bold;
+    font-weight: 600;
+    margin-left: 300px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-box {
+    background-color: #D7E2D0; 
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-box h2 {
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.auth-box label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.auth-box input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+.auth-button {
+    background-color: #000; 
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.auth-button:hover {
+    background-color: #333;
+}
+
+.auth-box p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.auth-box a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-box a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .auth-section {
+        flex-direction: column;
+    }
+
+    .auth-box {
+        margin: 10px 0;
+        width: 90%;
+    }
+}
