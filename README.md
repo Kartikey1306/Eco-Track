@@ -1,4 +1,4 @@
-## Eco-Track
+
 EcoTrack is a comprehensive e-waste management solution that aims to promote sustainable recycling practices. This project was developed by Kartikeydheer Srivastava and Greeva Patel during a hackathon organized by Odoo.
 
 #Project Overview:
